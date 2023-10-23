@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 public class Consola
 {
-    ListaTareas lista;
+    public Archivo archivo;
+    public ListaTareas lista;
     public Consola()
     {
         ListaTareas lista = new ListaTareas();
+        Archivo archivo = new Archivo();
         elegirOpcion();
     }
     public void menu()
@@ -25,6 +27,7 @@ public class Consola
     }
     public void elegirOpcion()
     {
+        String ruta;
         int opcion;
         do
         {
@@ -56,10 +59,14 @@ public class Consola
                     lista.MarcarTareaComoCompletada(int.Parse(Console.ReadLine()));
                     break;
                 case 6:
-                    
+                    Console.WriteLine("Ingrese la ruta del archivo: ");
+                    ruta = Console.ReadLine();
+                    archivo.GuardarTareas(lista, ruta);
                     break;
                 case 7:
-                    
+                    Console.WriteLine("Ingrese la ruta del archivo: ");
+                    ruta = Console.ReadLine();
+                    archivo.CargarTareas(lista, ruta);
                     break;
                 case 8:
                     System.Environment.Exit(0);
@@ -71,6 +78,5 @@ public class Consola
             
         } while (opcion != 8);
         
-
     }
 }
