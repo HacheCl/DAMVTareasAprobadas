@@ -3,6 +3,6 @@
     public static void Main()
     {
         Consola consola = new Consola();
-        consola.elegirOpcion();
+        consola.ElegirOpcion();
     }
 }

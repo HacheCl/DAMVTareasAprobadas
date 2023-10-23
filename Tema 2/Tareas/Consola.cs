@@ -9,10 +9,11 @@ public class Consola
     public Archivo archivo;
     public ListaTareas lista;
     public Consola()
+
     {
         ListaTareas lista = new ListaTareas();
         Archivo archivo = new Archivo();
-        elegirOpcion();
+        ElegirOpcion();
     }
     public void menu()
     {
@@ -25,7 +26,7 @@ public class Consola
         Console.WriteLine("7. Cargar tareas desde archivo");
         Console.WriteLine("8. salir");
     }
-    public void elegirOpcion()
+    public void ElegirOpcion()
     {
         String ruta;
         int opcion;
@@ -61,12 +62,12 @@ public class Consola
                 case 6:
                     Console.WriteLine("Ingrese la ruta del archivo: ");
                     ruta = Console.ReadLine();
-                    archivo.GuardarTareas(lista, ruta);
+                    Archivo.GuardarTareas(lista, ruta);
                     break;
                 case 7:
                     Console.WriteLine("Ingrese la ruta del archivo: ");
                     ruta = Console.ReadLine();
-                    archivo.CargarTareas(lista, ruta);
+                    this.lista = Archivo.CargarTareas(lista, ruta);
                     break;
                 case 8:
                     System.Environment.Exit(0);

@@ -6,31 +6,33 @@ using System.Threading.Tasks;
 
 public class Tarea
 {
-    string descripcion;
-    DateTime fechaVencimiento;
-    bool completada;
+    public string Descripcion { get; set;}
+    public DateTime FechaVencimiento { get; set; }
+    public bool Completada { get; set; }
     public Tarea(string descripcion,int año, int mes, int dia)
     {
-        this.descripcion = descripcion;
-        this.fechaVencimiento = new DateTime(año, mes, dia);
-        completada = false;
+        this.Descripcion = descripcion;
+        this.FechaVencimiento = new DateTime(año, mes, dia);
+        Completada = false;
     }
-    public String toString()
-    {
-        return "Descripcion: " + descripcion + " Fecha: " + fechaVencimiento + " Completada: " + completada;
-    }
+
     
     
     public bool EstaCompletada()
     {
-        return completada;
+        return Completada;
     }
     public DateTime getFecha()
     {
-        return fechaVencimiento;
+        return FechaVencimiento;
     }
     public void MarcarComoCompletada()
     {
-        completada = true;
+        Completada = true;
+    }
+
+    public override string? ToString()
+    {
+        return "Descripcion: " + Descripcion + " Fecha: " + FechaVencimiento + " Completada: " + Completada;
     }
 }

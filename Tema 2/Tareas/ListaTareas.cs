@@ -6,48 +6,48 @@ using System.Threading.Tasks;
 
 public class ListaTareas
 {
-    List<Tarea> tareas;
+    List<Tarea> Tareas { get; set; }
 
 
     public ListaTareas()
     {
-        tareas = new List<Tarea>();
+        Tareas = new List<Tarea>();
     }
 
     public void AgregarTarea(string descripcion, int año, int mes,int dia)
     {
         Tarea tarea = new Tarea(descripcion, año, mes, dia);
-        tareas.Add(tarea);
+        Tareas.Add(tarea);
     }
 
     public void ListarTareas()
     {
-        foreach (Tarea tarea in tareas)
+        foreach (Tarea tarea in Tareas)
         {
-            Console.WriteLine(tareas.IndexOf(tarea) + ". " + tarea.ToString());
+            Console.WriteLine(Tareas.IndexOf(tarea) + ". " + tarea.ToString());
         }
     }
     public void ListarTareasIncompletas()
     {
-        foreach (Tarea tarea in tareas)
+        foreach (Tarea tarea in Tareas)
         {
             if (!tarea.EstaCompletada())
             {
-                Console.WriteLine(tareas.IndexOf(tarea) + ". " + tarea.ToString());
+                Console.WriteLine(Tareas.IndexOf(tarea) + ". " + tarea.ToString());
             }
         }
     }
     public void ListarTareasPorFecha()
     {
-        tareas.Sort((x, y) => DateTime.Compare(x.getFecha(), y.getFecha()));
-        foreach (Tarea tarea in tareas)
+        Tareas.Sort((x, y) => DateTime.Compare(x.getFecha(), y.getFecha()));
+        foreach (Tarea tarea in Tareas)
         {
-            Console.WriteLine(tareas.IndexOf(tarea) + ". " + tarea.ToString());
+            Console.WriteLine(Tareas.IndexOf(tarea) + ". " + tarea.ToString());
         }
     }
     public void MarcarTareaComoCompletada(int indice)
     {
-        tareas[indice].MarcarComoCompletada();
+        Tareas[indice].MarcarComoCompletada();
     }
     
 }
