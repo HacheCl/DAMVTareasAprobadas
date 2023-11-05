@@ -21,5 +21,6 @@ namespace DivisasGodTierSPlus
         {
             return Nombre;
         }
+        
     }
 }
