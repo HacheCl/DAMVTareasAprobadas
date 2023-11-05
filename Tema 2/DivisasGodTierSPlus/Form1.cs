@@ -25,8 +25,6 @@ namespace DivisasGodTierSPlus
             {
                 MessageBox.Show("No se ha podido cargar el historial");
             }
-            
-            
         }
         public void CargarOpciones(ComboBox combo)
         {
