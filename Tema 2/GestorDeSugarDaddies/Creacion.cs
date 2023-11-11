@@ -16,6 +16,7 @@ namespace GestorDeSugarDaddies
         {
             InitializeComponent();
             this.Text = "";
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,6 +41,11 @@ namespace GestorDeSugarDaddies
         {
             nombre.Text = "";
             nombre.ForeColor = Color.Black;
+        }
+        public void ResetNombre()
+        {
+            nombre.Text = "Introduzca el nombre...";
+            nombre.ForeColor = Color.Gray;
         }
     }
 }

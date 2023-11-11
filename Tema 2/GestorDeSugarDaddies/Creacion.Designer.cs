@@ -37,9 +37,10 @@
             // 
             btnAceptar.BackColor = Color.DarkSeaGreen;
             btnAceptar.Font = new Font("Gill Sans Ultra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAceptar.Location = new Point(12, 41);
+            btnAceptar.Location = new Point(14, 55);
+            btnAceptar.Margin = new Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(105, 39);
+            btnAceptar.Size = new Size(120, 52);
             btnAceptar.TabIndex = 0;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = false;
@@ -49,9 +50,10 @@
             // 
             nombre.Font = new Font("Gill Sans Ultra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
             nombre.ForeColor = SystemColors.WindowFrame;
-            nombre.Location = new Point(12, 12);
+            nombre.Location = new Point(14, 16);
+            nombre.Margin = new Padding(3, 4, 3, 4);
             nombre.Name = "nombre";
-            nombre.Size = new Size(216, 22);
+            nombre.Size = new Size(246, 26);
             nombre.TabIndex = 1;
             nombre.Text = "Introduzca el nombre...";
             nombre.Click += textClick;
@@ -60,9 +62,10 @@
             // 
             btnCancel.BackColor = Color.Salmon;
             btnCancel.Font = new Font("Gill Sans Ultra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancel.Location = new Point(123, 41);
+            btnCancel.Location = new Point(141, 55);
+            btnCancel.Margin = new Padding(3, 4, 3, 4);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(105, 39);
+            btnCancel.Size = new Size(120, 52);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
@@ -70,15 +73,15 @@
             // 
             // Creacion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(240, 90);
+            ClientSize = new Size(274, 120);
             Controls.Add(btnCancel);
             Controls.Add(nombre);
             Controls.Add(btnAceptar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Creacion";
-            Text = "Form2";
             ResumeLayout(false);
             PerformLayout();
         }

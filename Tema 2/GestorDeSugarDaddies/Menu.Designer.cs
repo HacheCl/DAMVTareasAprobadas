@@ -34,15 +34,18 @@
             menuBorrar = new ToolStripMenuItem();
             menuAbrir = new ToolStripMenuItem();
             infoToolStripMenuItem = new ToolStripMenuItem();
+            lblClickMe = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { menuFile, infoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 27);
+            menuStrip1.Padding = new Padding(7, 3, 0, 3);
+            menuStrip1.Size = new Size(914, 35);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -51,25 +54,25 @@
             menuFile.DropDownItems.AddRange(new ToolStripItem[] { menuGuardar, menuBorrar, menuAbrir });
             menuFile.Font = new Font("Gill Sans Ultra Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             menuFile.Name = "menuFile";
-            menuFile.Size = new Size(49, 23);
+            menuFile.Size = new Size(64, 29);
             menuFile.Text = "File";
             // 
             // menuGuardar
             // 
             menuGuardar.Name = "menuGuardar";
-            menuGuardar.Size = new Size(145, 24);
+            menuGuardar.Size = new Size(186, 30);
             menuGuardar.Text = "Guardar";
             // 
             // menuBorrar
             // 
             menuBorrar.Name = "menuBorrar";
-            menuBorrar.Size = new Size(145, 24);
+            menuBorrar.Size = new Size(186, 30);
             menuBorrar.Text = "Borrar";
             // 
             // menuAbrir
             // 
             menuAbrir.Name = "menuAbrir";
-            menuAbrir.Size = new Size(145, 24);
+            menuAbrir.Size = new Size(186, 30);
             menuAbrir.Text = "Abrir";
             menuAbrir.Click += menuAbrir_Click;
             // 
@@ -77,33 +80,34 @@
             // 
             infoToolStripMenuItem.Font = new Font("Gill Sans Ultra Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            infoToolStripMenuItem.Size = new Size(53, 23);
+            infoToolStripMenuItem.Size = new Size(70, 29);
             infoToolStripMenuItem.Text = "Info";
             infoToolStripMenuItem.Click += infoToolStripMenuItem_Click;
             // 
+            // lblClickMe
+            // 
+            lblClickMe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblClickMe.AutoSize = true;
+            lblClickMe.Font = new Font("Gill Sans Ultra Bold", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblClickMe.Location = new Point(558, 511);
+            lblClickMe.Name = "lblClickMe";
+            lblClickMe.Size = new Size(121, 20);
+            lblClickMe.TabIndex = 1;
+            lblClickMe.Text = "CLICK ME -->";
+            lblClickMe.Click += lblClickMe_Click;
+            // 
             // Menu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Controls.Add(lblClickMe);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            MinimumSize = new Size(300, 300);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(340, 384);
             Name = "Menu";
             Text = "Form1";
-            Load += FormImagen_Load;
-            MdiChildActivate += FormImagen_Load;
-            Shown += FormImagen_Load;
-            ResizeBegin += FormImagen_Load;
-            ResizeEnd += FormImagen_Load;
-            Click += FormImagen_Load;
-            PaddingChanged += FormImagen_Load;
-            DoubleClick += FormImagen_Load;
-            MouseEnter += FormImagen_Load;
-            MouseLeave += FormImagen_Load;
-            MouseHover += FormImagen_Load;
-            Move += FormImagen_Load;
-            Resize += FormImagen_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -118,5 +122,6 @@
         private ToolStripMenuItem menuBorrar;
         private ToolStripMenuItem menuAbrir;
         private ToolStripMenuItem infoToolStripMenuItem;
+        private Label lblClickMe;
     }
 }

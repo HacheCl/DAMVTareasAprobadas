@@ -17,6 +17,7 @@ namespace GestorDeSugarDaddies
 
             InitializeComponent();
             this.Text = "";
+            this.TopMost = true;
         }
 
         private void label1_Click(object sender, EventArgs e)

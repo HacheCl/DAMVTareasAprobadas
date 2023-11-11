@@ -24,6 +24,7 @@ namespace GestorDeSugarDaddies
             flowLayoutPanel1.Click -= Form1_MouseDown;
             flowLayoutPanel1.Click += Form1_MouseDown;
             creacion = new Creacion();
+            this.TopMost = true;
 
         }
 
@@ -53,9 +54,9 @@ namespace GestorDeSugarDaddies
         }
         private string cortarNombre(string nombre)
         {
-            if (nombre.Length >= 15)
+            if (nombre.Length >= 12)
             {
-                nombre = nombre.Substring(0, 12) + "...";
+                nombre = nombre.Substring(0, 8) + "...";
             }
             return nombre;
         }
@@ -78,7 +79,6 @@ namespace GestorDeSugarDaddies
             button.FlatAppearance.BorderSize = 0;
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.MouseOverBackColor = Color.LightGray;
-
 
             return button;
         }
@@ -104,7 +104,7 @@ namespace GestorDeSugarDaddies
 
         private void MostrarFormularioCreacion()
         {
-
+            creacion.TopMost = true;
             DialogResult result = creacion.ShowDialog();
 
 
@@ -124,10 +124,9 @@ namespace GestorDeSugarDaddies
                     }
                 }
             }
-            else
-            {
-                MessageBox.Show("Operación cancelada");
-            }
+            
+            creacion.ResetNombre();
+            
         }
 
         private void CrearArchivo(string nombreArchivo)
@@ -135,7 +134,7 @@ namespace GestorDeSugarDaddies
             string ruta = Properties.Resources.Ruta_Directorio + "\\" + nombreArchivo + ".txt";
             if (!File.Exists(ruta))
             {
-                MessageBox.Show("Archivo creado con éxito.");
+                
                 File.Create(ruta);
                 actualizarFlowLayoutPanel();
             }
@@ -158,7 +157,6 @@ namespace GestorDeSugarDaddies
                 if (!Directory.Exists(ruta))
                 {
                     Directory.CreateDirectory(ruta);
-                    MessageBox.Show("Carpeta creada con éxito.");
                     actualizarFlowLayoutPanel();
                 }
                 else

@@ -34,14 +34,14 @@ namespace GestorDeSugarDaddies
             MostrarFormConImagen();
 
             ActualizarPosicionFormConImagen();
-
+            formConImagen.TopMost = true;
         }
 
         private void ActualizarPosicionFormConImagen()
         {
-            int offsetX = -this.Width;
-            int offsetY = -this.Height - 132;
 
+            int offsetX = -this.Width;
+            int offsetY = -this.Height - 130;
 
             formConImagen.Location = new Point(
                 this.Location.X - formConImagen.Width - offsetX,
@@ -52,38 +52,33 @@ namespace GestorDeSugarDaddies
 
         private void FormPrincipal_LocationChanged(object sender, EventArgs e)
         {
-
             ActualizarPosicionFormConImagen();
-
         }
 
         private void MostrarFormConImagen()
         {
             formConImagen.Show();
-
         }
 
         private void SuscribirEventos()
         {
             this.LocationChanged += FormPrincipal_LocationChanged;
             this.SizeChanged += FormPrincipal_Resize;
-            this.MouseDown += Menu_MouseDown;
+
         }
         private void FormPrincipal_Resize(object sender, EventArgs e)
         {
             ActualizarPosicionFormConImagen();
-            formConImagen.Focus();
         }
-        private void FormImagen_Load(object sender, EventArgs e)
+
+        private void label1_Click(object sender, EventArgs e)
         {
-            formConImagen.Focus();
+
         }
-        private void Menu_MouseDown(object sender, MouseEventArgs e)
+
+        private void lblClickMe_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.BringToFront();
-            }
+
         }
     }
 }

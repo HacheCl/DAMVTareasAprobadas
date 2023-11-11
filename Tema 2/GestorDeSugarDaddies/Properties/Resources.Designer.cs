@@ -83,16 +83,6 @@ namespace GestorDeSugarDaddies.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap camelloTrue {
-            get {
-                object obj = ResourceManager.GetObject("camelloTrue", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap File {
             get {
                 object obj = ResourceManager.GetObject("File", resourceCulture);
@@ -106,6 +96,16 @@ namespace GestorDeSugarDaddies.Properties {
         internal static System.Drawing.Bitmap Folder {
             get {
                 object obj = ResourceManager.GetObject("Folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap patricio {
+            get {
+                object obj = ResourceManager.GetObject("patricio", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
