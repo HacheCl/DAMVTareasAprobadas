@@ -33,16 +33,17 @@
             menuClickD = new ContextMenuStrip(components);
             cREARARCHIVOToolStripMenuItem = new ToolStripMenuItem();
             cREARFICHEROToolStripMenuItem = new ToolStripMenuItem();
+            buttVolver = new Button();
             menuClickD.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.Location = new Point(1, 30);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(914, 600);
+            flowLayoutPanel1.Size = new Size(647, 403);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // menuClickD
@@ -50,13 +51,13 @@
             menuClickD.ImageScalingSize = new Size(20, 20);
             menuClickD.Items.AddRange(new ToolStripItem[] { cREARARCHIVOToolStripMenuItem, cREARFICHEROToolStripMenuItem });
             menuClickD.Name = "contextMenuStrip1";
-            menuClickD.Size = new Size(295, 72);
+            menuClickD.Size = new Size(247, 60);
             // 
             // cREARARCHIVOToolStripMenuItem
             // 
             cREARARCHIVOToolStripMenuItem.Font = new Font("Gill Sans Ultra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cREARARCHIVOToolStripMenuItem.Name = "cREARARCHIVOToolStripMenuItem";
-            cREARARCHIVOToolStripMenuItem.Size = new Size(294, 34);
+            cREARARCHIVOToolStripMenuItem.Size = new Size(246, 28);
             cREARARCHIVOToolStripMenuItem.Text = "CREAR ARCHIVO";
             cREARARCHIVOToolStripMenuItem.Click += cREARARCHIVOToolStripMenuItem_Click;
             // 
@@ -64,20 +65,31 @@
             // 
             cREARFICHEROToolStripMenuItem.Font = new Font("Gill Sans Ultra Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cREARFICHEROToolStripMenuItem.Name = "cREARFICHEROToolStripMenuItem";
-            cREARFICHEROToolStripMenuItem.Size = new Size(294, 34);
+            cREARFICHEROToolStripMenuItem.Size = new Size(246, 28);
             cREARFICHEROToolStripMenuItem.Text = "CREAR CARPETA";
             cREARFICHEROToolStripMenuItem.Click += cREARFICHEROToolStripMenuItem_Click;
             // 
+            // buttVolver
+            // 
+            buttVolver.Location = new Point(573, 1);
+            buttVolver.Name = "buttVolver";
+            buttVolver.Size = new Size(75, 23);
+            buttVolver.TabIndex = 1;
+            buttVolver.Text = "Volver";
+            buttVolver.UseVisualStyleBackColor = true;
+            buttVolver.Click += buttVolver_Click;
+            // 
             // ExploradorArchivo
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(648, 445);
+            Controls.Add(buttVolver);
             Controls.Add(flowLayoutPanel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ExploradorArchivo";
             menuClickD.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -85,5 +97,6 @@
         private ContextMenuStrip menuClickD;
         private ToolStripMenuItem cREARARCHIVOToolStripMenuItem;
         private ToolStripMenuItem cREARFICHEROToolStripMenuItem;
+        private Button buttVolver;
     }
 }

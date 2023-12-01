@@ -5,6 +5,7 @@ namespace GestorDeSugarDaddies
     public partial class Menu : Form
     {
         FormConImagen formConImagen;
+        ExploradorArchivo exploradorArchivo;
         public Menu()
         {
             InitializeComponent();
@@ -16,7 +17,7 @@ namespace GestorDeSugarDaddies
 
         private void menuAbrir_Click(object sender, EventArgs e)
         {
-            ExploradorArchivo exploradorArchivo = new ExploradorArchivo();
+            exploradorArchivo = new ExploradorArchivo(this);
             exploradorArchivo.Show();
 
         }
@@ -70,15 +71,18 @@ namespace GestorDeSugarDaddies
         {
             ActualizarPosicionFormConImagen();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        public void setTexto(string texto)
         {
-
+            richTextBox1.Text = texto;
         }
 
-        private void lblClickMe_Click(object sender, EventArgs e)
+        private void menuGuardar_Click(object sender, EventArgs e)
         {
-
+            if (exploradorArchivo!=null)
+            {
+                exploradorArchivo.Guardar(richTextBox1.Text);
+            }
+            
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿public class Program
+﻿using Tareas;
+
+public class Program
 {
     public static void Main()
     {
-        Consola consola = new Consola();
-        consola.ElegirOpcion();
+        Class2 class2 = new Class2();
     }
 }

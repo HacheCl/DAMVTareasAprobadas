@@ -15,6 +15,7 @@ public class Tarea
         this.FechaVencimiento = new DateTime(año, mes, dia);
         Completada = false;
     }
+    
 
     
     

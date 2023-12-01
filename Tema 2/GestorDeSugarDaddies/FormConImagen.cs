@@ -32,7 +32,6 @@ namespace GestorDeSugarDaddies
             this.Size = new Size(303, 404);
 
 
-
         }
 
 
@@ -44,17 +43,17 @@ namespace GestorDeSugarDaddies
             {
                 this.BackgroundImage.Dispose();
                 this.BackgroundImage = Properties.Resources.patricio; // Cambia a la nueva imagen
-                
+
             }
             else
             {
                 this.BackgroundImage.Dispose();
                 this.BackgroundImage = Properties.Resources.bobTrue; // Cambia de nuevo a la imagen original
-                
+
             }
 
             imagenOriginal = !imagenOriginal; // Cambia el estado para la próxima vez
-            
+
         }
     }
 }
