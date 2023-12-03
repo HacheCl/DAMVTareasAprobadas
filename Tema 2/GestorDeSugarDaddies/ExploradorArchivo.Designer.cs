@@ -59,7 +59,7 @@
             cREARARCHIVOToolStripMenuItem.Name = "cREARARCHIVOToolStripMenuItem";
             cREARARCHIVOToolStripMenuItem.Size = new Size(246, 28);
             cREARARCHIVOToolStripMenuItem.Text = "CREAR ARCHIVO";
-            cREARARCHIVOToolStripMenuItem.Click += cREARARCHIVOToolStripMenuItem_Click;
+            cREARARCHIVOToolStripMenuItem.Click += CrearArchivo_Click;
             // 
             // cREARFICHEROToolStripMenuItem
             // 
@@ -67,7 +67,7 @@
             cREARFICHEROToolStripMenuItem.Name = "cREARFICHEROToolStripMenuItem";
             cREARFICHEROToolStripMenuItem.Size = new Size(246, 28);
             cREARFICHEROToolStripMenuItem.Text = "CREAR CARPETA";
-            cREARFICHEROToolStripMenuItem.Click += cREARFICHEROToolStripMenuItem_Click;
+            cREARFICHEROToolStripMenuItem.Click += CrearDirectorio_Click;
             // 
             // buttVolver
             // 

@@ -15,10 +15,12 @@ namespace GestorDeSugarDaddies
     public partial class ExploradorArchivo : Form
     {
         Creacion creacion;
-        bool isFile = false;
-        string rutaActual = Properties.Resources.Ruta_Directorio;
         Menu menu;
-        string fileName = "";
+        public bool isFile = false;
+        public string rutaActual = Properties.Resources.Ruta_Directorio;
+        public string fileActualName ;
+        public string fileRutaActual;
+        public string lastCreated;
         public ExploradorArchivo(Menu menu)
         {
             this.menu = menu;
@@ -39,11 +41,16 @@ namespace GestorDeSugarDaddies
             DirectoryInfo di = new DirectoryInfo(rutaActual);
             di.GetDirectories().ToList().ForEach(di2 => addFolder(di2));
             di.GetFiles().ToList().ForEach(fi => addFile(fi));
-
+            this.Text = rutaActual;
+            menu.Text = fileActualName;
+        }
+        public void CrearArchivo()
+        {
+            isFile = true;
+            MostrarFormularioCreacion();
         }
 
-
-
+        
         private void addFile(FileInfo fi)
         {
             Button buttonTrue = addButton();
@@ -53,9 +60,10 @@ namespace GestorDeSugarDaddies
             nombre = nombre.Substring(0, nombre.Length - 4);
             nombre = cortarNombre(nombre);
             buttonTrue.Text = nombre;
-
+            
             buttonTrue.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonTrue.Click += buttonFile_Click;
+            menu.Text = fileActualName;
             flowLayoutPanel1.Controls.Add(buttonTrue);
         }
 
@@ -69,6 +77,7 @@ namespace GestorDeSugarDaddies
             buttonTrue.Text = nombre;
             buttonTrue.TextImageRelation = TextImageRelation.ImageAboveText;
             buttonTrue.Click += buttonFolder_Click;
+
             flowLayoutPanel1.Controls.Add(buttonTrue);
         }
         private string cortarNombre(string nombre)
@@ -88,22 +97,100 @@ namespace GestorDeSugarDaddies
             button.FlatAppearance.BorderSize = 0;
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.MouseOverBackColor = Color.LightGray;
-
+            AgregarMenuContextual(button);
+            
             return button;
+        }
+            private void buttonFolder_Click(object sender, EventArgs e)
+        {
+            Button? clickedButton = sender as Button;
+
+            rutaActual = Path.Combine(rutaActual, clickedButton.Name);
+
+            actualizarFlowLayoutPanel();
+        }
+        private void AgregarMenuContextual(Button boton)
+        {
+            ContextMenuStrip menuContextual = new ContextMenuStrip();
+            ToolStripMenuItem itemMenu = new ToolStripMenuItem("Borrar");
+            itemMenu.Click += (sender, e) => MenuItem_Click(sender, e, boton); 
+            menuContextual.Items.Add(itemMenu);
+            boton.ContextMenuStrip = menuContextual;
+            boton.MouseClick += Boton_Click;
+        }
+        private void Boton_Click(object sender, MouseEventArgs e)
+        {
+            
+            if (e.Button == MouseButtons.Right)
+            {
+               
+                Button boton = sender as Button;             
+                if (boton != null && boton.ContextMenuStrip != null)
+                {
+                    boton.ContextMenuStrip.Show(boton, e.Location);
+                }
+            }
+        }
+        private void MenuItem_Click(object sender, EventArgs e, Button botonAsociado)
+        {
+            string ruta = Path.Combine(rutaActual, botonAsociado.Name);
+            if (EsDirectorio(ruta))
+            {
+                try
+                {
+                    Directory.Delete(ruta);
+                }catch (Exception ex) {
+                    MostrarOpcion(ruta);
+                }
+                
+            }else if (EsArchivo(ruta))
+            {
+                File.Delete(ruta);
+            }
+            else
+            {
+                return;
+            }
+            
+            actualizarFlowLayoutPanel();
+        }
+        private void MostrarOpcion(string ruta)
+        {
+            DialogResult resultado = MessageBox.Show("Está usted completamente seguro, \n puede perder a su familia si acepta.", "Confirmación", MessageBoxButtons.OKCancel);
+
+            if (resultado == DialogResult.OK)
+            {
+                Directory.Delete(ruta,true);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public bool EsDirectorio(string ruta)
+        {
+            return Directory.Exists(ruta);
+        }
+
+        public bool EsArchivo(string ruta)
+        {
+            return File.Exists(ruta);
         }
         private void buttonFile_Click(object sender, EventArgs e)
         {
             Button? clickedButton = sender as Button;
             try
             {
-                fileName = clickedButton.Name;
-                string ruta = Path.Combine(rutaActual, clickedButton.Name);
-                string contenido = File.ReadAllText(ruta);
+                fileActualName = clickedButton.Name;
+
+                fileRutaActual = Path.Combine(rutaActual, clickedButton.Name);
+                string contenido = File.ReadAllText(fileRutaActual);
                 if (contenido == string.Empty)
                 {
                     contenido = "Esta vacio";
                 }
-                
+                menu.ActualizarNombreForm(fileActualName);
                 menu.setTexto(contenido);
             }
             catch (Exception ex)
@@ -111,14 +198,9 @@ namespace GestorDeSugarDaddies
                 MessageBox.Show("Error al abrir el archivo: " + ex.Message);
             }
         }
-        private void buttonFolder_Click(object sender, EventArgs e)
-        {
-            Button? clickedButton = sender as Button;
-            rutaActual = Path.Combine(rutaActual, clickedButton.Name);
-
-            actualizarFlowLayoutPanel();
-        }
         
+        
+
 
 
 
@@ -129,18 +211,18 @@ namespace GestorDeSugarDaddies
 
         }
 
-        private void cREARARCHIVOToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CrearArchivo_Click(object sender, EventArgs e)
         {
             isFile = true;
             MostrarFormularioCreacion();
         }
-        private void cREARFICHEROToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CrearDirectorio_Click(object sender, EventArgs e)
         {
             isFile = false;
             MostrarFormularioCreacion();
         }
 
-        private void MostrarFormularioCreacion()
+        public void MostrarFormularioCreacion()
         {
             creacion.TopMost = true;
             DialogResult result = creacion.ShowDialog();
@@ -155,6 +237,8 @@ namespace GestorDeSugarDaddies
                     if (isFile)
                     {
                         CrearArchivo(nombre);
+                        lastCreated = nombre;
+                        fileActualName = nombre;
                     }
                     else
                     {
@@ -227,14 +311,13 @@ namespace GestorDeSugarDaddies
             
         }
 
-        internal void Guardar(string texto)
+        public void Guardar(string texto)
         {
-            if (rutaActual!=Properties.Resources.Ruta_Directorio)
-            {
-                File.WriteAllText(Path.Combine(rutaActual, fileName), texto);
-            }
-            
+               
+               File.WriteAllText(Path.Combine(rutaActual, fileActualName), texto);
+              
         }
+
     }
 }
 

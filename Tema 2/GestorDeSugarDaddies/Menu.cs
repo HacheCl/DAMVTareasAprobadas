@@ -1,4 +1,5 @@
 using System.Drawing.Drawing2D;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GestorDeSugarDaddies
 {
@@ -78,11 +79,46 @@ namespace GestorDeSugarDaddies
 
         private void menuGuardar_Click(object sender, EventArgs e)
         {
-            if (exploradorArchivo!=null)
+            if (ExisteExplorador())
             {
-                exploradorArchivo.Guardar(richTextBox1.Text);
+                if (exploradorArchivo.fileActualName != null)
+                {
+                    exploradorArchivo.Guardar(richTextBox1.Text);
+
+                }
+                else
+                {
+                    exploradorArchivo.CrearArchivo();
+
+                }
+
+            }
+        }
+        private bool ExisteExplorador()
+        {
+            if (exploradorArchivo == null)
+            {
+                exploradorArchivo = new ExploradorArchivo(this);
+                
+            }
+            return true;
+        }
+
+        private void nuevoArchivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ExisteExplorador())
+            {
+                exploradorArchivo.CrearArchivo();
+                richTextBox1.Text = "Escriba aqui";
+                exploradorArchivo.actualizarFlowLayoutPanel();
+                Text = exploradorArchivo.fileActualName;
             }
             
+            
         }
+        public void ActualizarNombreForm(string nombre) { 
+            Text = nombre;
+        }
+
     }
 }
